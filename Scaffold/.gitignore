@@ -1,0 +1,9 @@
+# ignore all .log files
+*.log
+logs/*
+
+# ignore all files in output directory
+output/*
+
+#ignore stuff in __pycache__ directories
+**/__pycache__/*
