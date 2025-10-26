@@ -1,0 +1,22 @@
+{
+  "input": "raw.csv",
+  "operations": [
+    {
+      "op": "add",
+      "columns": [
+        "a",
+        "b"
+      ],
+      "result": "sum"
+    },
+    {
+      "op": "multiply",
+      "columns": [
+        "a",
+        "b"
+      ],
+      "result": "prod"
+    }
+  ],
+  "output": "results.csv"
+}

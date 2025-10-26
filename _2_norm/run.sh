@@ -5,9 +5,10 @@ set -euo pipefail
 VERBOSE=false
 TEST_MODE=false
 CLEAN=false
+EXECUTE=false
 
 # Valid short options: t (tests), v (verbose), c (clean)
-while getopts "tvc" opt; do
+while getopts "tvcx" opt; do
   case $opt in
     v)
       VERBOSE=true
@@ -25,6 +26,12 @@ while getopts "tvc" opt; do
           echo "Clean mode enabled"
       fi
       ;;
+    x)
+      EXECUTE=true
+      if [ "$VERBOSE" = true ]; then
+          echo "Execute mode enabled"
+      fi
+      ;;
     \?)
       echo "Invalid option: -$OPTARG" >&2
       exit 1
@@ -35,10 +42,21 @@ done
 if [ "$TEST_MODE" = true ]; then
     if [ "$VERBOSE" = true ]; then
         echo "Executing tests"
+        echo "python3 -m unittest discover -v -s tests"
     fi
     # Run the tests using python -m unittest
     python3 -m unittest discover -v -s tests
 fi
+
+if [ "$EXECUTE" = true ]; then
+    if [ "$VERBOSE" = true ]; then
+        echo "Executing main python file"
+        echo "python3 src/2_norm.py $@"
+    fi
+    # Run the main python script
+    python3 src/2_norm.py $@
+fi
+
 
 if [ "$CLEAN" = true ]; then
     if [ "$VERBOSE" = true ]; then

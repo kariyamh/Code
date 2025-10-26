@@ -1,0 +1,17 @@
+CSV / Excel Parsing and Normalization
+
+Objective: Read mixed CSV and Excel files and output standardized tables.
+
+Tasks
+    Implement file discovery using pathlib.
+    Load all .csv and .xlsx files in a directory into pandas DataFrames.
+    Normalize column names (trim, lowercase, replace spaces with _).
+    Combine all into one consolidated DataFrame with a new source_file column.
+    Save merged data as merged_output.csv and merged_output.xlsx.
+    Log summary: number of files processed, rows combined, columns found.
+
+Acceptance Criteria
+    Running python src/main.py --input data/input produces two consolidated outputs.
+    No unhandled exceptions on bad/missing files.
+    Output column naming consistent across file types.
+    Summary log lines match observed output counts.
